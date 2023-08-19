@@ -90,10 +90,6 @@ def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
 	
 def main_menu():
-	while True:
-		os.system("xset s off")
-		os.system("xset -dpms")
-		time.sleep(10)
 	clear_console()
 	print(menu)
 #add remote network mapper option
