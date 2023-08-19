@@ -88,16 +88,13 @@ menu = """
 	"""
 def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
-
-def Prevent_Sleep():
+	
+def main_menu():
+	def Prevent_Sleep():
 	while True:
 		os.system("xset s off")
 		os.system("xset -dpms")
 		time.sleep(10)
-	
-def main_menu():
-	Stop_Sleep = threading.Thread(target=Prevent_Sleep)
-	Stop_Sleep.start()
 	clear_console()
 	print(menu)
 #add remote network mapper option
