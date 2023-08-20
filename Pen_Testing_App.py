@@ -7,7 +7,7 @@ import time
 import sys
 now = datetime.datetime.now()
 	
-#logos
+#logo
 NMlogo = """
 ##    ## ######## ######## ##      ##  #######  ########  ##    ##    
 ###   ## ##          ##    ##  ##  ## ##     ## ##     ## ##   ##     
@@ -89,9 +89,10 @@ menu = """
 	[4] Previous Scans
 	"""
 def clear_console():
-    os.system('cls' if os.name == 'nt' else 'clear')
+	os.system('cls' if os.name == 'nt' else 'clear')
 
-
+def remove_cache():
+	
 while True:
 	#print the menu initially
 	clear_console()
@@ -117,7 +118,7 @@ while True:
 				print('Scan complete' +' --', now.strftime("%Y-%m-%d %H:%M:%S"))
 				nmap_scanner.Report()
 				option1 = input('Press Enter to exit.')
-			elif re.match(pattern, option):
+			elif re.match(pattern, option1):
 				scan_parameters = option.split(' ')
 				scan_parameters.pop(0)
 				scan_parameters = [int(x) for x in scan_parameters]
