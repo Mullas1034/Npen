@@ -131,7 +131,7 @@ while True:
 			elif option1.lower() == 'back':
 				break
 			else:
-				input(u"\u001b[33mERROR: \u001b[0m Command syntax Error. Press any key for automatic refresh.")
+				input("\u001b[33mERROR: \u001b[0m Command syntax Error. Press any key for automatic refresh.")
 				
 			
 	elif option == '2':	
@@ -149,7 +149,7 @@ while True:
 			elif ip.lower() == 'back':
 				break
 			else:
-				print(u"\u001b[33mERROR: \u001b[0m Input not Valid.")
+				print("\u001b[33mERROR: \u001b[0m Input not Valid.")
 				option = input("")
 
 	elif option == '3':
@@ -178,9 +178,9 @@ while True:
 			elif file_choice.lower() == 'back':
 				break		
 			else:
-				print(u"\u001b[33mERROR: \u001b[0m Input not Valid.")
+				print("\u001b[33mERROR: \u001b[0m Input not Valid.")
 				input("Press Enter to exit.")
 
 	else:
-		input(u"\u001b[33mERROR: \u001b[0m Input not Valid.")
+		input("\u001b[33mERROR: \u001b[0m Input not Valid.")
 
