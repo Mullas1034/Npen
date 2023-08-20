@@ -162,7 +162,6 @@ while True:
 		nmap_scanner.Report()
 		print('Scan complete, Report generated')
 		input('Press enter to return to main menu.')
-		break
 
 	elif option == '4':
 		while True:
