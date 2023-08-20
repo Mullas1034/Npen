@@ -202,7 +202,7 @@ def main_menu():
 			nmap_scanner.Report()
 			print('Scan complete, Report generated')
 			input('Press enter to return to main menu.')
-			main_menu()
+			break
 
 		elif option == '4':
 			pattern = r'^-?\d+(\.\d+)?$'
