@@ -93,6 +93,7 @@ def clear_console():
 	
 def main_menu():
 	clear_console()
+	sys.stdin.flush()
 	print(menu)
 #add remote network mapper option
 	option = input("")
