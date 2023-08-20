@@ -116,7 +116,6 @@ def main_menu():
 					print('Scan complete' +' --', now.strftime("%Y-%m-%d %H:%M:%S"))
 					nmap_scanner.Report()
 					option = input('Press Enter to return to main menu.')
-					option 
 				elif re.match(pattern, option):
 					scan_parameters = option.split(' ')
 					scan_parameters.pop(0)
@@ -126,7 +125,7 @@ def main_menu():
 					nmap_scanner.Report()
 					option = input('Command:')
 				elif option.lower() == 'back':
-					main_menu()
+					break
 				else:
 					input(u"\u001b[33mERROR: \u001b[0m Command syntax Error. Press any key for automatic refresh.")
 					option = '1'
