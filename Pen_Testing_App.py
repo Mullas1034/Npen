@@ -229,4 +229,5 @@ def main_menu():
 			print(u"\u001b[33mERROR: \u001b[0m Input not Valid.")
 			option = input("Command:")
 
-main_menu()
+while True:
+	main_menu()
