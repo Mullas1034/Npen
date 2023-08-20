@@ -91,121 +91,78 @@ menu = """
 def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+
+while True:
+	#print the menu initially
+	clear_console()
+	sys.stdin.flush()
+	print(menu)
+	option = input("Command:")
+	option = option.strip()
 	
-def main_menu():
-	while True:
-		clear_console()
-		sys.stdin.flush()
-		print(menu)
-	#add remote network mapper option
-		option = input("Command:")
-		option = option.strip()
-		if option == '1':
+	if option == '1':
+		while True:
 			clear_console()
 			print(NMlogo)
 			pattern = r'\bscan\s+\d+(\s+\d+)*\b'
 			nmap_scanner.networkMap('')
-
-			try:
-				sys.stdin.flush()
-				option = input('Command:')
-				option = option.strip()
-				if option.lower() == 'refresh':
-					option = '1'
-				elif option.lower() == 'scan':
-					nmap_scanner.MassPortScanner()
-					print('Scan complete' +' --', now.strftime("%Y-%m-%d %H:%M:%S"))
-					nmap_scanner.Report()
-					option = input('Press Enter to return to main menu.')
-					break
-				elif re.match(pattern, option):
-					scan_parameters = option.split(' ')
-					scan_parameters.pop(0)
-					scan_parameters = [int(x) for x in scan_parameters]
-					nmap_scanner.SinglePortScan(scan_parameters)
-					print('Scan complete'+' --', now.strftime("%Y-%m-%d %H:%M:%S"))
-					nmap_scanner.Report()
-					option = input('Command:')
-				elif option.lower() == 'back':
-					break
-				else:
-					input(u"\u001b[33mERROR: \u001b[0m Command syntax Error. Press any key for automatic refresh.")
-					option = '1'
-			except Exception as e:	
-				print(u"\u001b[33mMpS ERROR: \u001b[0m", e)
-				input("Press any key to return to the main menu.")
+			sys.stdin.flush()
+			option1 = input('Command:')
+			option1 = option1.strip()
+			
+			if option1.lower() == 'refresh':
+				print('reloading')
+			elif option1.lower() == 'scan':
+				nmap_scanner.MassPortScanner()
+				print('Scan complete' +' --', now.strftime("%Y-%m-%d %H:%M:%S"))
+				nmap_scanner.Report()
+				option1 = input('Press Enter to exit.')
+			elif re.match(pattern, option):
+				scan_parameters = option.split(' ')
+				scan_parameters.pop(0)
+				scan_parameters = [int(x) for x in scan_parameters]
+				nmap_scanner.SinglePortScan(scan_parameters)
+				print('Scan complete'+' --', now.strftime("%Y-%m-%d %H:%M:%S"))
+				nmap_scanner.Report()
+				option1 = input('Press Enter to exit.')
+			elif option1.lower() == 'back':
 				break
+			else:
+				input(u"\u001b[33mERROR: \u001b[0m Command syntax Error. Press any key for automatic refresh.")
 				
-					
-				
-		elif option == '2':	
-			try:
-				clear_console()
-				print(PSlogo)
-				IP_pattern = r"\b(?:\d{1,3}\.){3}\d{1,3}\b"
-				ip = input('Enter Target IP: ')
-				if re.search(IP_pattern, ip):
-					nmap_scanner.SinglePortScan(ip.strip())
-					print('Scan complete'+' -- ', now.strftime("%Y-%m-%d %H:%M:%S"))
-					nmap_scanner.Report()
-					option = input('Command:')
-				elif ip.lower() == 'back':
-					break
-				else:
-					print(u"\u001b[33mERROR: \u001b[0m Input not Valid.")
-					option = input("Command:")
-			except Exception as e:
-				print(u"\u001b[33mMpS ERROR: \u001b[0m", e)
-				input("Press any key to return to the main menu.")
-				break 
-
-#this is for remote network mapping, change to option 3
-		elif option == '88':
+			
+	elif option == '2':	
+		while True:
 			clear_console()
-			print(NMlogo)
-			pattern = r'\bscan\s+\d+(\s+\d+)*\b'
-			ip = input("Enter an IP on target network:")
-			nmap_scanner.networkMap(ip)
-			try:
-				option = input('Command:')
-				option = option.strip()
-				if option.lower() == 'refresh':
-					option = '1'
-				elif option.lower() == 'scan':
-					nmap_scanner.MassPortScanner()
-					print('Scan complete' +' --', now.strftime("%Y-%m-%d %H:%M:%S"))
-					nmap_scanner.Report()
-					option = input('Command:')
-				elif re.match(pattern, option):
-					scan_parameters = option.split(' ')
-					scan_parameters.pop(0)
-					scan_parameters = [int(x) for x in scan_parameters]
-					nmap_scanner.SinglePortScan(scan_parameters)
-					print('Scan complete'+' --', now.strftime("%Y-%m-%d %H:%M:%S"))
-					nmap_scanner.Report()
-					option = input('Command:')
-				elif option.lower() == 'back':
-					main_menu()
-				else:
-					input(u"\u001b[33mERROR: \u001b[0m Command syntax Error. Press any key for automatic refresh.")
-					option = '1'
-			except Exception as e:	
-				print(u"\u001b[33mMpS ERROR: \u001b[0m", e)
-				option = input("Press any key for automatic refresh.")
+			print(PSlogo)
+			IP_pattern = r"\b(?:\d{1,3}\.){3}\d{1,3}\b"
+			ip = input('Enter Target IP: ')	
+			
+			if re.search(IP_pattern, ip):
+				nmap_scanner.SinglePortScan(ip.strip())
+				print('Scan complete'+' -- ', now.strftime("%Y-%m-%d %H:%M:%S"))
+				nmap_scanner.Report()
+				option = input('Press Enter to exit.')
+			elif ip.lower() == 'back':
+				break
+			else:
+				print(u"\u001b[33mERROR: \u001b[0m Input not Valid.")
+				option = input("")
 
-		elif option == '3':
-			clear_console()
-			#conduct network map
-			nmap_scanner.networkMap('')
-			#Conduct vulnerability scan
-			nmap_scanner.MassPortScanner()
-			#generate report file
-			nmap_scanner.Report()
-			print('Scan complete, Report generated')
-			input('Press enter to return to main menu.')
-			break
+	elif option == '3':
+		clear_console()
+		#conduct network map
+		nmap_scanner.networkMap('')
+		#Conduct vulnerability scan
+		nmap_scanner.MassPortScanner()
+		#generate report file
+		nmap_scanner.Report()
+		print('Scan complete, Report generated')
+		input('Press enter to return to main menu.')
+		break
 
-		elif option == '4':
+	elif option == '4':
+		while True:
 			pattern = r'^-?\d+(\.\d+)?$'
 			clear_console()
 			print(PrvSlogo)
@@ -215,26 +172,12 @@ def main_menu():
 			if re.match(pattern, file_choice):
 				nmap_scanner.File_Open(int(file_choice))
 				option = input('Press any Key to exit.')
-				option = '4'	
 			elif file_choice.lower() == 'back':
-				option = 'back'
-							
+				break		
 			else:
 				print(u"\u001b[33mERROR: \u001b[0m Input not Valid.")
-				input("")
-				option = "4"
+				input("Press Enter to exit.")
 
-		elif option.lower() == "r":
-			nmap_scanner.Report()
-			option = input('Command:')
+	else:
+		input(u"\u001b[33mERROR: \u001b[0m Input not Valid.")
 
-		elif option.lower() == 'back':
-			main_menu()
-		else:
-			clear_console()
-			print(menu)
-			input(u"\u001b[33mERROR: \u001b[0m Input not Valid.")
-			break
-
-while True:
-	main_menu()
