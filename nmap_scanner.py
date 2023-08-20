@@ -256,6 +256,7 @@ def summary():
 		del Failed[:]
 		del Passed[:]
 		del Finished[:]
+		del Vulns[:]
 	except Exception as e:
 		print(u"\u001b[33mSUMMARY ERROR: \u001b[0m ", e)
 
