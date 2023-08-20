@@ -118,7 +118,7 @@ while True:
 				nmap_scanner.Report()
 				option1 = input('Press Enter to exit.')
 			elif re.match(pattern, option1):
-				scan_parameters = option.split(' ')
+				scan_parameters = option1.split(' ')
 				print(scan_parameters)
 				scan_parameters.pop(0)
 				print(scan_parameters)
