@@ -101,9 +101,6 @@ def OS_Detection(ip):
 def CoreInfo():
 	return(str(multiprocessing.cpu_count()))
 
-def Device_count():
-	return(len(IPaddrs))
-
 def MassPortScanner():	
 	animation_stop = threading.Event()
 	animation_thread = threading.Thread(target=loading_animation, args=(animation_stop,))

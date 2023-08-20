@@ -4,6 +4,7 @@ import re
 import datetime
 import threading
 import time
+import sys
 now = datetime.datetime.now()
 	
 #logos
@@ -88,6 +89,7 @@ menu = """
 	"""
 def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
+
 	
 def main_menu():
 	clear_console()
@@ -103,6 +105,7 @@ def main_menu():
 			nmap_scanner.networkMap('')
 
 			try:
+				sys.stdin.flush()
 				option = input('Command:')
 				option = option.strip()
 				if option.lower() == 'refresh':
@@ -111,7 +114,8 @@ def main_menu():
 					nmap_scanner.MassPortScanner()
 					print('Scan complete' +' --', now.strftime("%Y-%m-%d %H:%M:%S"))
 					nmap_scanner.Report()
-					option = input('Command:')
+					option = input('Press Enter to return to main menu.')
+					main_menu()
 				elif re.match(pattern, option):
 					scan_parameters = option.split(' ')
 					scan_parameters.pop(0)
@@ -191,7 +195,8 @@ def main_menu():
 			#generate report file
 			nmap_scanner.Report()
 			print('Scan complete, Report generated')
-			option = input('Command:')
+			input('Press enter to return to main menu.')
+			main_menu()
 
 		elif option == '4':
 			pattern = r'^-?\d+(\.\d+)?$'
