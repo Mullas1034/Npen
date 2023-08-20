@@ -232,8 +232,8 @@ def main_menu():
 		else:
 			clear_console()
 			print(menu)
-			print(u"\u001b[33mERROR: \u001b[0m Input not Valid.")
-			option = input("Command:")
+			input(u"\u001b[33mERROR: \u001b[0m Input not Valid.")
+			break
 
 while True:
 	main_menu()
