@@ -91,7 +91,6 @@ menu = """
 def clear_console():
 	os.system('cls' if os.name == 'nt' else 'clear')
 
-def remove_cache():
 	
 while True:
 	#print the menu initially
