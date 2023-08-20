@@ -92,13 +92,13 @@ def clear_console():
 
 	
 def main_menu():
-	clear_console()
-	sys.stdin.flush()
-	print(menu)
-#add remote network mapper option
-	option = input("")
-	option = option.strip()
 	while True:
+		clear_console()
+		sys.stdin.flush()
+		print(menu)
+	#add remote network mapper option
+		option = input("")
+		option = option.strip()
 		if option == '1':
 			clear_console()
 			print(NMlogo)
@@ -116,7 +116,7 @@ def main_menu():
 					print('Scan complete' +' --', now.strftime("%Y-%m-%d %H:%M:%S"))
 					nmap_scanner.Report()
 					option = input('Press Enter to return to main menu.')
-					main_menu()
+					option 
 				elif re.match(pattern, option):
 					scan_parameters = option.split(' ')
 					scan_parameters.pop(0)
@@ -132,7 +132,7 @@ def main_menu():
 					option = '1'
 			except Exception as e:	
 				print(u"\u001b[33mMpS ERROR: \u001b[0m", e)
-				option = input("Press any key for automatic refresh.")
+				option = input("Press any key to return to the main menu.")
 				
 					
 				
