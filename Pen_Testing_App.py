@@ -97,7 +97,7 @@ def main_menu():
 		sys.stdin.flush()
 		print(menu)
 	#add remote network mapper option
-		option = input("")
+		option = input("Command:")
 		option = option.strip()
 		if option == '1':
 			clear_console()
