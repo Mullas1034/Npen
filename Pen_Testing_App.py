@@ -92,7 +92,7 @@ def clear_console():
 	os.system('cls' if os.name == 'nt' else 'clear')
 
 def terminal_reset():
-	os.system('stty echoe')
+	os.system('stty crterase')
 while True:
 	#print the menu initially
 	clear_console()
