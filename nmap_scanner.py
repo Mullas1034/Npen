@@ -145,6 +145,7 @@ def SinglePortScan(IPs):
 	animation_stop = threading.Event()
 	animation_thread = threading.Thread(target=loading_animation, args=(animation_stop,))
 	animation_thread.start()
+	pattern = r"\b(?:\d{1,3}\.){3}\d{1,3}\b"
 	proc = []
 	sublist = 4
 	proc_max = 0
@@ -152,7 +153,12 @@ def SinglePortScan(IPs):
 	run_max = 0
 	try:
 		print('[--------------------------SCAN-----------------------------]')
-		if type(IPs) == list:
+		if re.match(pattern, IPs):
+			process = [Process(target=MassPortScan, args=(IPs,))]
+			for i in process:
+				i.start()
+				i.join()		
+		else:
 			processes = [Process(target=portscan, args=(IPaddrs[i],))for i in IPs]
 			last_proc = processes[-1]
 			for process in processes:		
@@ -172,12 +178,6 @@ def SinglePortScan(IPs):
 				while True:	
 					if run_max == len(Finished):
 						break
-						
-		else:
-			process = [Process(target=MassPortScan, args=(IPs,))]
-			for i in process:
-				i.start()
-				i.join()
 	except Exception as e:
 		print(e)
 
