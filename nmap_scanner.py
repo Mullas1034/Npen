@@ -285,6 +285,7 @@ def Report():
 			file.write('Overall score:'+str(round(sum(Scores)/len(Scores),2)))
 			file.close()
 			print(os.path.abspath(file_name), " Has been generated.")
+			List_Cache_reset()
 			
 
 	except Exception as e:
