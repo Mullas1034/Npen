@@ -153,12 +153,8 @@ def SinglePortScan(IPs):
 	run_max = 0
 	try:
 		print('[--------------------------SCAN-----------------------------]')
-		if re.match(pattern, IPs):
-			process = [Process(target=MassPortScan, args=(IPs,))]
-			for i in process:
-				i.start()
-				i.join()		
-		else:
+		if type(IPs) == list:
+			
 			processes = [Process(target=portscan, args=(IPaddrs[i],))for i in IPs]
 			last_proc = processes[-1]
 			for process in processes:		
@@ -178,6 +174,12 @@ def SinglePortScan(IPs):
 				while True:	
 					if run_max == len(Finished):
 						break
+		else:
+			process = [Process(target=MassPortScan, args=(IPs,))]
+			for i in process:
+				i.start()
+				i.join()
+		
 	except Exception as e:
 		print(e)
 
