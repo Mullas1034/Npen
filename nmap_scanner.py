@@ -253,12 +253,6 @@ def summary():
 		print('PASSED:', str(round(Passed_per,2))+'%')
 		print('Number of Vulnerabilities:', len(Vulns))
 		print('Average Severity of Vulnerabilities:', str(sum(Scores)/len(Scores)))
-		del Failed[:]
-		del Passed[:]
-		del Finished[:]
-		del Vulns[:]
-		del Data[:]
-		del Scores [:]
 	except Exception as e:
 		print(u"\u001b[33mSUMMARY ERROR: \u001b[0m ", e)
 
@@ -316,6 +310,13 @@ def Report():
 			file.close()
 			print(file_name, " Has been generated.")
 
+	del Failed[:]
+	del Passed[:]
+	del Finished[:]
+	del Vulns[:]
+	del Data[:]
+	del Scores [:]
+	
 def Prev_Scans():
 	
 	pattern = r"^\./NPEN_REPORT#\d{3}\.txt$"
