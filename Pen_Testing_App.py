@@ -132,27 +132,32 @@ def main_menu():
 					option = '1'
 			except Exception as e:	
 				print(u"\u001b[33mMpS ERROR: \u001b[0m", e)
-				option = input("Press any key to return to the main menu.")
+				input("Press any key to return to the main menu.")
 				break
 				
 					
 				
 		elif option == '2':	
-			clear_console()
-			print(PSlogo)
-			IP_pattern = r"\b(?:\d{1,3}\.){3}\d{1,3}\b"
-			ip = input('Enter Target IP: ')
-			if re.search(IP_pattern, ip):
-				nmap_scanner.SinglePortScan(ip.strip())
-				print('Scan complete'+' -- ', now.strftime("%Y-%m-%d %H:%M:%S"))
-				nmap_scanner.Report()
-				option = input('Command:')
-			elif ip.lower() == 'back':
-				main_menu()
-			else:
-				print(u"\u001b[33mERROR: \u001b[0m Input not Valid.")
-				input("")
-				option = "2"
+			try:
+				clear_console()
+				print(PSlogo)
+				IP_pattern = r"\b(?:\d{1,3}\.){3}\d{1,3}\b"
+				ip = input('Enter Target IP: ')
+				if re.search(IP_pattern, ip):
+					nmap_scanner.SinglePortScan(ip.strip())
+					print('Scan complete'+' -- ', now.strftime("%Y-%m-%d %H:%M:%S"))
+					nmap_scanner.Report()
+					option = input('Command:')
+				elif ip.lower() == 'back':
+					main_menu()
+				else:
+					print(u"\u001b[33mERROR: \u001b[0m Input not Valid.")
+					input("")
+					option = "2"
+			except Exception as e:
+				print(u"\u001b[33mMpS ERROR: \u001b[0m", e)
+				input("Press any key to return to the main menu.")
+				break 
 
 #this is for remote network mapping, change to option 3
 		elif option == '88':
