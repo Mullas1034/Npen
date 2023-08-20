@@ -230,6 +230,5 @@ def main_menu():
 			option = input("Command:")
 
 
-
-		
-main_menu()
+while True:
+	main_menu()
