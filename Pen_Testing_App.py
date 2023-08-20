@@ -133,6 +133,7 @@ def main_menu():
 			except Exception as e:	
 				print(u"\u001b[33mMpS ERROR: \u001b[0m", e)
 				option = input("Press any key to return to the main menu.")
+				break
 				
 					
 				
