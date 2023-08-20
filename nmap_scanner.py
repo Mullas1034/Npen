@@ -284,7 +284,7 @@ def Report():
 							file.write('\n')
 			file.write('\n')
 			file.write('Overall score:'+str(round(sum(Scores)/len(Scores),2)))
-			
+			file.close()
 			print(os.path.abspath(file_name), " Has been generated.")
 			
 
@@ -308,6 +308,7 @@ def Report():
 							file.write('\n')
 			file.write('\n')
 			file.write('Overall score:'+str(round(sum(Scores)/len(Scores),2)))
+			file.close()
 			print(file_name, " Has been generated.")
 
 def Prev_Scans():
