@@ -57,9 +57,9 @@ def networkMap(TargetIP):
 	global IPaddrs
 	IPaddrs = []
 	if TargetIP == "":
-		nmapCommand = 'sudo nmap -sn  '+identifier()+'/24'
+		nmapCommand = 'nmap -sn  '+identifier()+'/24'
 	else:
-		nmapCommand = 'sudo nmap -sn '+TargetIP+'/24'
+		nmapCommand = 'nmap -sn '+TargetIP+'/24'
 
 	#run the nmap command
 	for command in range(3):
@@ -76,7 +76,7 @@ def networkMap(TargetIP):
 
 def OS_Detection(ip):
 	node_OS = ""	
-	OS_Command = ['sudo nmap -O '+str(ip)]
+	OS_Command = ['nmap -O '+str(ip)]
 	#SubData('Nmap Command used:' + str(OS_Command))
 	try:
 		output = subprocess.check_output(OS_Command, shell=True, universal_newlines = True)
