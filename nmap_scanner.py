@@ -310,6 +310,7 @@ def Report():
 			file.close()
 			print(file_name, " Has been generated.")
 
+def List_Cache_reset():	
 	del Failed[:]
 	del Passed[:]
 	del Finished[:]
