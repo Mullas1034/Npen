@@ -91,12 +91,12 @@ menu = """
 def clear_console():
 	os.system('cls' if os.name == 'nt' else 'clear')
 
-def terminal_reset():
-	os.system('stty echo')
+#def terminal_reset():
+	#os.system('stty echo')
 while True:
 	#print the menu initially
 	clear_console()
-	terminal_reset()
+	#terminal_reset()
 	sys.stdin.flush()
 	print(menu)
 	option = input("Command:")
@@ -105,7 +105,7 @@ while True:
 	if option == '1':
 		while True:
 			clear_console()
-			terminal_reset()
+			#terminal_reset()
 			print(NMlogo)
 			pattern = r'\bscan\s+\d+(\s+\d+)*\b'
 			nmap_scanner.networkMap('')
