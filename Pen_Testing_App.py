@@ -149,11 +149,10 @@ def main_menu():
 					nmap_scanner.Report()
 					option = input('Command:')
 				elif ip.lower() == 'back':
-					main_menu()
+					break
 				else:
 					print(u"\u001b[33mERROR: \u001b[0m Input not Valid.")
-					input("")
-					option = "2"
+					option = input("Command:")
 			except Exception as e:
 				print(u"\u001b[33mMpS ERROR: \u001b[0m", e)
 				input("Press any key to return to the main menu.")
