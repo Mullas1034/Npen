@@ -119,11 +119,8 @@ while True:
 				option1 = input('Press Enter to exit.')
 			elif re.match(pattern, option1):
 				scan_parameters = option1.split(' ')
-				print(scan_parameters)
 				scan_parameters.pop(0)
-				print(scan_parameters)
 				scan_parameters = [int(x) for x in scan_parameters]
-				print(scan_parameters)
 				nmap_scanner.SinglePortScan(scan_parameters)
 				print('Scan complete'+' --', now.strftime("%Y-%m-%d %H:%M:%S"))
 				nmap_scanner.Report()
