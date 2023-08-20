@@ -116,6 +116,7 @@ def main_menu():
 					print('Scan complete' +' --', now.strftime("%Y-%m-%d %H:%M:%S"))
 					nmap_scanner.Report()
 					option = input('Press Enter to return to main menu.')
+					break
 				elif re.match(pattern, option):
 					scan_parameters = option.split(' ')
 					scan_parameters.pop(0)
