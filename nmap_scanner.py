@@ -259,7 +259,9 @@ def summary():
 		print('FAILED:', str(round(Failed_per,2))+'%')
 		print('PASSED:', str(round(Passed_per,2))+'%')
 		print('Number of Vulnerabilities:', len(Vulns))
-		print('Average Severity of Vulnerabilities:', str(sum(Scores)/len(Scores)))
+		if len(Scores) == 0:
+			Scores.append(0)
+		print('Average Severity of Vulnerabilities:', str(round(sum(Scores)/len(Scores))))
 	except Exception as e:
 		print(u"\u001b[33mSUMMARY ERROR: \u001b[0m ", e)
 
