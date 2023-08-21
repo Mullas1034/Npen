@@ -150,8 +150,7 @@ while True:
 			elif ip.lower() == 'back':
 				break
 			else:
-				print("\u001b[33mERROR: \u001b[0m Input not Valid.")
-				option = input("")
+				input("\u001b[33mERROR: \u001b[0m Input not Valid.")
 
 	elif option == '3':
 		clear_console()
