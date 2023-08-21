@@ -37,6 +37,14 @@ def loading_animation(stop_event):
 		print("\r Scanning ..." + animation[idx] + '\r', end='')
 		idx = (idx + 1) % len(animation)
 		time.sleep(0.2)
+		
+def files_loading_animation(stop_event):
+	animation = "|/-\\"
+	idx = 0
+	while not stop_event.is_set():
+		print("\r Locating Files ..." + animation[idx] + '\r', end='')
+		idx = (idx + 1) % len(animation)
+		time.sleep(0.2)
 
 def identifier():
 	
@@ -320,7 +328,10 @@ def List_Cache_reset():
 	del Scores [:]
 	
 def Prev_Scans():
-	
+	animation_stop = threading.Event()
+	animation_thread = threading.Thread(target=files_loading_animation, args=(animation_stop,))
+	sublist = 4
+	animation_thread.start()
 	pattern = r"^\./NPEN_REPORT#\d{3}\.txt$"
 	Prev_Scans = []
 	Files = []
@@ -345,6 +356,8 @@ def Prev_Scans():
 		error = 'ERROR: Unable to reach:'+str(e)
 		print(u"\u001b[33m"+error+"\u001b[0m")
 		print(e)
+	animation_stop.set()
+
 
 def File_Open(index):
 	try:
