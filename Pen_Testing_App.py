@@ -93,6 +93,7 @@ def clear_console():
 
 def terminal_reset():
 	os.system('stty echoe')
+	
 while True:
 	#print the menu initially
 	clear_console()
