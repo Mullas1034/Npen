@@ -239,8 +239,7 @@ def Vuln_Scan(IP, ports):
 					print(str(IP)+'--'+"\033[31mFAILED \033[0m")
 					return(banner+'\n'+port+':'+'\n'+data+'\n'+banner+'\n'+'FAILED'+'\n')
 		if len(results) == 0:
-			Passed.append('PASSED')
-			Scores.append()			
+			Passed.append('PASSED')		
 			#SubData('PASSED\n')
 			print(str(IP)+'--'+"\033[32mPASSED\033[0m            ")	
 			return('PASSED')
