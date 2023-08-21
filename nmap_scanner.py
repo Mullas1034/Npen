@@ -261,7 +261,7 @@ def summary():
 		print('Number of Vulnerabilities:', len(Vulns))
 		if len(Scores) == 0:
 			Scores.append(0)
-		print('Average Severity of Vulnerabilities:', str(round(sum(Scores)/len(Scores))))
+		print('Average Severity of Vulnerabilities:', str(round(sum(Scores)/len(Scores),2)))
 	except Exception as e:
 		print(u"\u001b[33mSUMMARY ERROR: \u001b[0m ", e)
 
