@@ -5,7 +5,6 @@ import threading
 import sys
 import socket
 import random
-import vulners
 from multiprocessing import Process, Manager
 import multiprocessing
 import os
