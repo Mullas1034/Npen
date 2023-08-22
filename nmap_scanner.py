@@ -16,6 +16,7 @@ Data = manager.list()
 Scores = manager.list()
 Failed = manager.list()
 Passed = manager.list()
+Error = manager.list()
 Vulns = manager.list()
 scans = []
 
@@ -205,9 +206,10 @@ def Vuln_Scan(IP, ports):
 	try:
 
 		for port in ports:
-			nmapCommand = 'sudo nmap --script nmap-vulners/ -sV '+IP+" -p "+re.sub(r'\D', '',port)
-			nmapCommandOutput = subprocess.check_output(nmapCommand, stderr=subprocess.DEVNULL, shell=True)
-			NmapCommandString = nmapCommandOutput.decode('utf8')
+			try:
+				nmapCommand = 'sudo nmap --script nmap-vulners/ -sV '+IP+" -p "+re.sub(r'\D', '',port)
+				nmapCommandOutput = subprocess.check_output(nmapCommand, stderr=subprocess.DEVNULL, shell=True)
+				NmapCommandString = nmapCommandOutput.decode('utf8')
 			for i in NmapCommandString.split('\n'):
 				if i.find('cve') != -1:
 					results.append(i)
@@ -243,7 +245,9 @@ def Vuln_Scan(IP, ports):
 			print(str(IP)+'--'+"\033[32mPASSED\033[0m            ")	
 			return('PASSED')
 	except Exception as e:
-		#SubData('ERROR'+str(e) )
+		#SubData('ERROR'+str(e))
+		Error.append('ERROR')
+		print(str(IP)+ '--'+"ERROR            )
 		return('VS ERROR'+str(e))
 					
 def summary():
