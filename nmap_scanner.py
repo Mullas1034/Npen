@@ -206,10 +206,9 @@ def Vuln_Scan(IP, ports):
 	try:
 
 		for port in ports:
-			try:
-				nmapCommand = 'sudo nmap --script nmap-vulners/ -sV '+IP+" -p "+re.sub(r'\D', '',port)
-				nmapCommandOutput = subprocess.check_output(nmapCommand, stderr=subprocess.DEVNULL, shell=True)
-				NmapCommandString = nmapCommandOutput.decode('utf8')
+			nmapCommand = 'sudo nmap --script nmap-vulners/ -sV '+IP+" -p "+re.sub(r'\D', '',port)
+			nmapCommandOutput = subprocess.check_output(nmapCommand, stderr=subprocess.DEVNULL, shell=True)
+			NmapCommandString = nmapCommandOutput.decode('utf8')
 			for i in NmapCommandString.split('\n'):
 				if i.find('cve') != -1:
 					results.append(i)
@@ -247,7 +246,8 @@ def Vuln_Scan(IP, ports):
 	except Exception as e:
 		#SubData('ERROR'+str(e))
 		Error.append('ERROR')
-		print(str(IP)+ '--'+"ERROR            )
+		
+		print(str(IP)+ '--'+"ERROR            ")
 		return('VS ERROR'+str(e))
 					
 def summary():
@@ -263,6 +263,8 @@ def summary():
 		print('PASSED:', str(round(Passed_per,2))+'%')
 		print('Number of Vulnerabilities:', len(Vulns))
 		if len(Scores) == 0:
+			Scores.append(0)
+		elif len(Scores) == 0 and sum(Scores) == 0:
 			Scores.append(0)
 		print('Average Severity of Vulnerabilities:', str(round(sum(Scores)/len(Scores),2)))
 	except Exception as e:
