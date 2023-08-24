@@ -164,6 +164,7 @@ def SinglePortScan(IPs):
 		print('[--------------------------SCAN-----------------------------]')
 		if type(IPs) == list:
 			processes = [Process(target=portscan, args=(IPaddrs[i],))for i in IPs]
+			last_proc = processes[-1]
 			for process in processes:
 				process.start()
 				proc.append(process)
