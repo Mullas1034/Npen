@@ -141,7 +141,7 @@ while True:
 			print(PSlogo)
 			IP_pattern = r"\b(?:\d{1,3}\.){3}\d{1,3}\b"
 			ip = input('Enter Target IP: ')	
-			
+			print(ip)
 			if re.search(IP_pattern, ip):
 				nmap_scanner.SinglePortScan(ip.strip())
 				print('Scan complete'+' -- ', now.strftime("%Y-%m-%d %H:%M:%S"))
