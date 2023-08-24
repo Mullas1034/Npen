@@ -277,7 +277,6 @@ def summary():
 		print(u"\u001b[33mSUMMARY ERROR: \u001b[0m ", e)
 
 		
-
 def Report():
 	try:
 		file_name = "NPEN_REPORT#"+str(random.randint(0,999))+'.txt'
