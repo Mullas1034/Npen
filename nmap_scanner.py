@@ -184,7 +184,7 @@ def SinglePortScan(IPs):
 						break
 		else:
 			print('test 1')
-			process = [Process(target=MassPortScan, args=(IPs,))]
+			process = [Process(target=portscan, args=(IPs,))]
 			for i in process:
 				i.start()
 				i.join()
