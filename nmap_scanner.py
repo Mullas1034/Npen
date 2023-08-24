@@ -427,7 +427,6 @@ def portscan(ip):
 				test2.append('NO OPEN PORTS')
 				#SubData.append('NO OPEN PORTS')
 
-			test2.append(Vuln_Scan(ip, ports))
 			vulns = Vuln_Scan(ip, ports)
 			if type(vulns) == list:
 				for i in vulns:
