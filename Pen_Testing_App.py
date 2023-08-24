@@ -125,8 +125,6 @@ while True:
 				scan_parameters = option1.split(' ')
 				scan_parameters.pop(0)
 				scan_parameters = [int(x) for x in scan_parameters]
-				print(scan_parameters)
-				print(type(scan_parameters))
 				nmap_scanner.SinglePortScan(scan_parameters)
 				print('Scan complete'+' --', now.strftime("%Y-%m-%d %H:%M:%S"))
 				nmap_scanner.Report()
